@@ -7,6 +7,8 @@ import optimizer as o
 # User defined type for layershapes in type suggestion
 LayerShape = NewType('LayerShape', tuple[int, int])
 
+# Takes training data in the form of a pandas array. 
+# Will update to rectify and use Numpy in the future. 
 class modelTrainer:
     @staticmethod
     def trainModel(layerShapes: list[LayerShape], trainingData, targets, epochs=2001, learningRate=0.5):
