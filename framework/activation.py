@@ -1,5 +1,5 @@
 import numpy as np
-import loss
+from framework import loss
 
 class activation_ReLU:
     def forward(self, inputs):

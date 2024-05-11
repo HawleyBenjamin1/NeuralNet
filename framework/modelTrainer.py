@@ -1,8 +1,8 @@
 from typing import NewType
 import numpy as np
-import layer as l
-import activation as a
-import optimizer as o
+from framework import layer as l
+from framework import activation as a
+from framework import optimizer as o
 
 # User defined type for layershapes in type suggestion
 LayerShape = NewType('LayerShape', tuple[int, int])

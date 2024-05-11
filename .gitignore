@@ -1,2 +1,7 @@
 /venv
 /__pycache__
+setup.py
+NeuralNet.egg-info/dependency_links.txt
+NeuralNet.egg-info/PKG-INFO
+NeuralNet.egg-info/SOURCES.txt
+NeuralNet.egg-info/top_level.txt

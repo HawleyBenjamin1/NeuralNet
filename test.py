@@ -1,11 +1,9 @@
 import unittest
-import layer as l
+from framework import layer as l
 import numpy as np
 from nnfs.datasets import spiral_data
 import matplotlib.pyplot as plt
-import activation, loss
-import math
-import optimizer
+from framework import activation, loss, optimizer
 
 class TestLayerMethods(unittest.TestCase):
     def test_getOutput(self):

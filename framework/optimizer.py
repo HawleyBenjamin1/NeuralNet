@@ -1,5 +1,3 @@
-
-
 class optimizer():
     def __init__(self, learningRate=1.0):
         self.learningRate = learningRate

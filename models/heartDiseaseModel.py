@@ -1,8 +1,8 @@
 from ucimlrepo import fetch_ucirepo, list_available_datasets
 import pandas as pd
 import numpy as np
-import layer as l
-import optimizer, activation, modelTrainer
+from framework import layer as l
+from framework import optimizer, activation, modelTrainer
 
 
 def initializeDataSet():
@@ -130,6 +130,7 @@ def trainModel(shapes, trainingData, epochs, learningRate):
           f"Predictions vs Actual: \n {predictions}")
     
 def applyModel(model, testData):
+    print("Running test ...")
     targets = testData.pop('num')
     numLayers = len(model)
     
@@ -156,8 +157,8 @@ def applyModel(model, testData):
         
     print(f"Overall accuracy: {accuracy:.3f}")
         
-
-training, test = trainTestSplit()
-shapes = [[training.shape[1] - 1, 64], [64, 128], [128, 2]]
-heartDiseasePredictor = trainModel(shapes, training, learningRate=0.0001, epochs=15001)
-applyModel(heartDiseasePredictor, test)
+def runModelTest():
+    training, test = trainTestSplit()
+    shapes = [[training.shape[1] - 1, 64], [64, 128], [128, 2]]
+    heartDiseasePredictor = trainModel(shapes, training, learningRate=0.0001, epochs=15001)
+    applyModel(heartDiseasePredictor, test)
