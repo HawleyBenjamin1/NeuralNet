@@ -5,3 +5,12 @@ NeuralNet.egg-info/dependency_links.txt
 NeuralNet.egg-info/PKG-INFO
 NeuralNet.egg-info/SOURCES.txt
 NeuralNet.egg-info/top_level.txt
+framework/__pycache__/__init__.cpython-310.pyc
+framework/__pycache__/activation.cpython-310.pyc
+framework/__pycache__/layer.cpython-310.pyc
+framework/__pycache__/loss.cpython-310.pyc
+framework/__pycache__/modelTrainer.cpython-310.pyc
+framework/__pycache__/optimizer.cpython-310.pyc
+models/__pycache__/__init__.cpython-310.pyc
+models/__pycache__/heartDiseaseModel.cpython-310.pyc
+models/__pycache__/incomeBracketPrediction.cpython-310.pyc

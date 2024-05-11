@@ -1,6 +1,7 @@
 from ucimlrepo import fetch_ucirepo, list_available_datasets
 import pandas as pd
 import numpy as np
+import time
 from framework import layer as l
 from framework import optimizer, activation, modelTrainer
 
@@ -34,13 +35,15 @@ def cleanData():
     
     cleanedValues = joinedSets.dropna(axis=0)
     
+    cleanedValues.rename(columns={"num": "targets"}, inplace=True)
+    
     return cleanedValues
             
             
 def trainTestSplit():
     allData = cleanData()
     
-    trainingData = allData.sample(frac=0.70, axis=0, random_state=5)
+    trainingData = allData.sample(frac=0.7, axis=0, random_state=5)
     testData = allData.drop(index=trainingData.index)
     
     trainingData.reset_index(drop=True, inplace=True)
@@ -96,9 +99,8 @@ def trainTestSplit():
     packagedModel = [layer1, layer2, layer3]
     return packagedModel
 
-def trainModel(shapes, trainingData, epochs, learningRate):
-    targets = trainingData.pop('num')
-    return modelTrainer.modelTrainer.trainModel(shapes, trainingData, targets, epochs=epochs, learningRate=learningRate)
+def trainModel(shapes, trainingData, epochs, learningRate, batchSize):
+    return 
 
 # Defunct
 # def applyModel(model, test):
@@ -131,7 +133,7 @@ def trainModel(shapes, trainingData, epochs, learningRate):
     
 def applyModel(model, testData):
     print("Running test ...")
-    targets = testData.pop('num')
+    targets = testData.pop('targets')
     numLayers = len(model)
     
     model[0].forward(testData.to_numpy())
@@ -158,7 +160,14 @@ def applyModel(model, testData):
     print(f"Overall accuracy: {accuracy:.3f}")
         
 def runModelTest():
+    startTime = time.time()
+    
     training, test = trainTestSplit()
     shapes = [[training.shape[1] - 1, 64], [64, 128], [128, 2]]
-    heartDiseasePredictor = trainModel(shapes, training, learningRate=0.0001, epochs=15001)
+    epochs = 10001
+    learningRate = .0001
+    batchSize = 128
+    heartDiseasePredictor = modelTrainer.modelTrainer.trainModel(shapes, training, epochs, learningRate=learningRate, batchSize=batchSize)
     applyModel(heartDiseasePredictor, test)
+    
+    print("--- %.2f seconds ---" % (time.time() - startTime))

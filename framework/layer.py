@@ -21,7 +21,7 @@ class layer:
         
     @staticmethod
     def getRandomArray(rows, cols):
-        rng = np.random.default_rng()
+        rng = np.random.default_rng(seed=0)
         rng.standard_normal()
         
         return rng.standard_normal(size=(rows, cols))

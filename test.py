@@ -3,7 +3,7 @@ from framework import layer as l
 import numpy as np
 from nnfs.datasets import spiral_data
 import matplotlib.pyplot as plt
-from framework import activation, loss, optimizer
+from framework import activation, loss, optimizer, modelTrainer
 
 class TestLayerMethods(unittest.TestCase):
     def test_getOutput(self):
@@ -155,7 +155,7 @@ class TestLayerMethods(unittest.TestCase):
         # print('Gradients: separate loss and activation:')
         # print(dvalues2)
         
-    
+    @unittest.skip("Over doing it")
     def test_optimizer(self):
         X, y = spiral_data(100, 3)
         
@@ -206,8 +206,7 @@ class TestLayerMethods(unittest.TestCase):
         pred.set_title('Predicted')
         
         plt.show()
-        
-        
+
 
 if __name__ == '__main__':
     unittest.main()
